@@ -9,10 +9,10 @@ namespace SalaryWorker.DBWorker.Entities
 {
     class Rates
     {
-        private int Id { get; set; }
-        private float PayPerHour { get; set; }
-        private int ProfessionId { get; set; }
-        private DateTime LastUpdate { get; set; }
+        public int Id { get; set; }
+        public float PayPerHour { get; set; }
+        public int ProfessionId { get; set; }
+        public DateTime LastUpdate { get; set; }
 
         public Rates()
         {

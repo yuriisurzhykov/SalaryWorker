@@ -9,10 +9,10 @@ namespace SalaryWorker.DBWorker.Entities
 {
     class Payout
     {
-        private int Id { get; set; }
-        private DateTime Date { get; set; }
-        private float IssuedBy { get; set; }
-        private int EmployeeId { get; set; }
+        public int Id { get; set; }
+        public DateTime Date { get; set; }
+        public float IssuedBy { get; set; }
+        public int EmployeeId { get; set; }
 
         public Payout()
         {

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SalaryWorker.DBWorker.Postgres;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -8,6 +9,9 @@ namespace SalaryWorker
 {
     static class Program
     {
+
+        public static string connectionString = "Server=localhost;User Id=postgres;Password=12345678;Database=SalaryWorker;";
+
         /// <summary>
         /// Главная точка входа для приложения.
         /// </summary>
@@ -16,7 +20,8 @@ namespace SalaryWorker
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            //Application.Run(new CreateConnection());
+            PostgresConnection.CreateConnectionString();
         }
     }
 }

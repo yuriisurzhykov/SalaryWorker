@@ -8,10 +8,10 @@ namespace SalaryWorker.DBWorker.Entities
 {
     class Calculation
     {
-        private int Id { get; set; }
-        private DateTime Date { get; set; }
-        private int AmountHours { get; set; }
-        private int EmployeeId { get; set; }
+        public int Id { get; set; }
+        public DateTime Date { get; set; }
+        public int AmountHours { get; set; }
+        public int EmployeeId { get; set; }
 
         public Calculation()
         {

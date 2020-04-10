@@ -8,8 +8,8 @@ namespace SalaryWorker.DBWorker.Entities
 {
     class Profession
     {
-        private int Id { get; set; }
-        private string Name { get; set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
 
         public Profession()
         {

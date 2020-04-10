@@ -8,12 +8,12 @@ namespace SalaryWorker.DBWorker.Entities
 {
     class Employee
     {
-        private int Id { get; set; }
-        private string Passport { get; set; }
-        private DateTime Birthday { get; set; }
-        private int ProfessionId { get; set; }
-        private int DepartmentId { get; set; }
-        private DateTime Employment { get; set; }
+        public int Id { get; set; }
+        public string Passport { get; set; }
+        public DateTime Birthday { get; set; }
+        public int ProfessionId { get; set; }
+        public int DepartmentId { get; set; }
+        public DateTime Employment { get; set; }
 
         public Employee()
         {
