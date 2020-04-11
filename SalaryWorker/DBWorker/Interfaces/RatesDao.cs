@@ -9,8 +9,9 @@ namespace SalaryWorker.DBWorker.Interfaces
 {
     interface RatesDao
     {
-        void addRates(Rates rates);
-        void deleteRates(Rates rates);
-        List<Rates> getAll();
+        bool addRates(Rates rates);
+        bool deleteRates(Rates rates);
+        bool changeRates(Rates old, Rates n);
+        List<Rates> getAllRates();
     }
 }

@@ -9,8 +9,8 @@ namespace SalaryWorker.DBWorker.Interfaces
 {
     interface EmployeeDao
     {
-        int addEmployee(Employee employee);
-        void deleteEmployee(Employee employee);
+        bool addEmployee(Employee employee);
+        bool deleteEmployee(Employee employee);
         List<Employee> getBadEmployees();
         List<Employee> getEmployeeByDepartmentName(string name);
     }

@@ -5,8 +5,9 @@ namespace SalaryWorker.DBWorker.Interfaces
 {
     interface DepartmentDao
     {
-        int addDepartment(Department department);
-        void deleteDepartment(Department department);
-        List<Department> getAll();
+        bool addDepartment(Department department);
+        bool deleteDepartment(Department department);
+        List<Payroll> getMonthlyPayroll(int month, int year);
+        List<Department> getAllDepartment();
     }
 }

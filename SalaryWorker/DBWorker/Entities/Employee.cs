@@ -19,10 +19,10 @@ namespace SalaryWorker.DBWorker.Entities
         {
             Id = 0;
             Passport = "";
-            Birthday = DateTime.Now;
+            Birthday = DateTime.MinValue;
             ProfessionId = 0;
             DepartmentId = 0;
-            Employment = DateTime.Now;
+            Employment = DateTime.MinValue;
         }
 
         public Employee(int id, string passport, DateTime birthday, int professionId, int departmentId, DateTime employment)
@@ -33,6 +33,18 @@ namespace SalaryWorker.DBWorker.Entities
             ProfessionId = professionId;
             DepartmentId = departmentId;
             Employment = employment;
+        }
+
+        public override string ToString()
+        {
+            return "Employee: {" +
+                "id: " + Id +
+                "passport: " + Passport +
+                "birthday: " + Birthday +
+                "professionId: " + ProfessionId +
+                "departmentId: " + DepartmentId +
+                "employment: " + Employment +
+                "} ";
         }
     }
 }

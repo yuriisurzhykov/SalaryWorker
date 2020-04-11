@@ -9,8 +9,8 @@ namespace SalaryWorker.DBWorker.Interfaces
 {
     interface CalculationDao
     {
-        int addCalculation(Calculation calculation);
-        void deleteCalculation(Calculation calculation);
+        bool addCalculation(Calculation calculation);
+        bool deleteCalculation(Calculation calculation);
         bool changeCalculation(Calculation oldCalc, Calculation newCalc);
     }
 }

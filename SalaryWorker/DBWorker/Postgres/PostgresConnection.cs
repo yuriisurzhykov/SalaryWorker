@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Npgsql;
 using SalaryWorker.DBWorker.Interfaces;
+using SalaryWorker.Forms;
 
 namespace SalaryWorker.DBWorker.Postgres
 {
@@ -34,7 +35,7 @@ namespace SalaryWorker.DBWorker.Postgres
                                        connection[1],
                                        connection[2],
                                        connection[3]);
-                Application.Run(new Form1());
+                Application.Run(new GeneralStatement());
             }
             catch (FileNotFoundException)
             {

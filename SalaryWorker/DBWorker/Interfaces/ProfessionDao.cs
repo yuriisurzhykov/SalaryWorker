@@ -9,8 +9,8 @@ namespace SalaryWorker.DBWorker.Interfaces
 {
     interface ProfessionDao
     {
-        void addProfession(Profession profession);
-        void deleteProfession(Profession profession);
+        bool addProfession(Profession profession);
+        bool deleteProfession(Profession profession);
         List<Profession> getAllProfession();
     }
 }

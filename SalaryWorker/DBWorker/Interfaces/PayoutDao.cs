@@ -9,7 +9,7 @@ namespace SalaryWorker.DBWorker.Interfaces
 {
     interface PayoutDao
     {
-        int addPayout(Payout payout);
-        void deletePayout(Payout payout);
+        bool addPayout(Payout payout);
+        bool deletePayout(Payout payout);
     }
 }
