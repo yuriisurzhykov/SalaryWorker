@@ -11,6 +11,9 @@ namespace SalaryWorker.DBWorker.Interfaces
     {
         bool addEmployee(Employee employee);
         bool deleteEmployee(Employee employee);
+        Employee getEmployeeById(int id);
+        Employee getEmployeeByPassport(string passport);
+        List<Employee> getAllEmployees();
         List<Employee> getBadEmployees();
         List<Employee> getEmployeeByDepartmentName(string name);
     }

@@ -35,7 +35,7 @@ namespace SalaryWorker.DBWorker.Postgres
                                        connection[1],
                                        connection[2],
                                        connection[3]);
-                Application.Run(new GeneralStatement());
+                Application.Run(new DeletingEmployee());
             }
             catch (FileNotFoundException)
             {

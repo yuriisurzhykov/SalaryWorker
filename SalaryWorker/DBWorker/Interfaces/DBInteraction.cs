@@ -42,5 +42,8 @@ namespace SalaryWorker.DBWorker.Interfaces
         public abstract List<Department> getAllDepartment();
         public abstract bool changeRates(Rates old, Rates n);
         public abstract List<Payroll> getMonthlyPayroll(int month, int year);
+        public abstract Employee getEmployeeById(int id);
+        public abstract Employee getEmployeeByPassport(string passport);
+        public abstract List<Employee> getAllEmployees();
     }
 }

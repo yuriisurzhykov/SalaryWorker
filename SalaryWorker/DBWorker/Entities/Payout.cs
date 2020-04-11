@@ -11,23 +11,32 @@ namespace SalaryWorker.DBWorker.Entities
     {
         public int Id { get; set; }
         public DateTime Date { get; set; }
-        public float IssuedBy { get; set; }
-        public int EmployeeId { get; set; }
+        public decimal IssuedBy { get; set; }
+        public Employee Employee { get; set; }
 
         public Payout()
         {
             Id = 0;
-            Date = DateTime.Now;
+            Date = DateTime.MinValue;
             IssuedBy = 0;
-            EmployeeId = 0;
+            Employee = new Employee();
         }
 
-        public Payout(int id, DateTime date, float issuedBy, int employeeId)
+        public Payout(int id, DateTime date, decimal issuedBy, Employee employee)
         {
             Id = id;
             Date = date;
             IssuedBy = issuedBy;
-            EmployeeId = employeeId;
+            Employee = employee;
+        }
+
+        public override string ToString()
+        {
+            return "Employee: {" +
+                "id: " + Id + ", " +
+                "passport: " + Date + ", " +
+                "birthday: " + IssuedBy +
+                "} ";
         }
     }
 }

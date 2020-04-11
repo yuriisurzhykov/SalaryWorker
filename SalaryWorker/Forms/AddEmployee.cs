@@ -43,13 +43,13 @@ namespace SalaryWorker.Forms
 
         private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            employee.ProfessionId = professions[comboBox1.SelectedIndex].Id;
+            employee.Profession.Id = professions[comboBox1.SelectedIndex].Id;
             Console.WriteLine(employee);
         }
 
         private void ComboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            employee.DepartmentId = departments[comboBox2.SelectedIndex].Id;
+            employee.Department.Id = departments[comboBox2.SelectedIndex].Id;
             Console.WriteLine(employee);
         }
 
@@ -68,9 +68,9 @@ namespace SalaryWorker.Forms
         private void Button1_Click(object sender, EventArgs e)
         {
             if (employee.Birthday == DateTime.Now ||
-               employee.DepartmentId == 0 ||
+               employee.Department.Id == 0 ||
                employee.Employment == DateTime.MinValue ||
-               employee.ProfessionId == 0 || 
+               employee.Profession.Id == 0 || 
                employee.Passport == "")
             {
                 MessageBox.Show("Не все данные о сотруднике добавлены!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);

@@ -22,5 +22,13 @@ namespace SalaryWorker.DBWorker.Entities
             Id = id;
             Name = name;
         }
+
+        public override string ToString()
+        {
+            return "Profession: {" +
+                "id: " + Id + ", " +
+                "name: " + Name +
+                "} ";
+        }
     }
 }

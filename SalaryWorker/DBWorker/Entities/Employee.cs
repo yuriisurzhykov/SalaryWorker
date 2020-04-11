@@ -11,8 +11,8 @@ namespace SalaryWorker.DBWorker.Entities
         public int Id { get; set; }
         public string Passport { get; set; }
         public DateTime Birthday { get; set; }
-        public int ProfessionId { get; set; }
-        public int DepartmentId { get; set; }
+        public Profession Profession { get; set; }
+        public Department Department { get; set; }
         public DateTime Employment { get; set; }
 
         public Employee()
@@ -20,29 +20,29 @@ namespace SalaryWorker.DBWorker.Entities
             Id = 0;
             Passport = "";
             Birthday = DateTime.MinValue;
-            ProfessionId = 0;
-            DepartmentId = 0;
+            Profession = new Profession();
+            Department = new Department();
             Employment = DateTime.MinValue;
         }
 
-        public Employee(int id, string passport, DateTime birthday, int professionId, int departmentId, DateTime employment)
+        public Employee(int id, string passport, DateTime birthday, Profession profession, Department department, DateTime employment)
         {
             Id = id;
             Passport = passport;
             Birthday = birthday;
-            ProfessionId = professionId;
-            DepartmentId = departmentId;
+            Profession = profession;
+            Department = department;
             Employment = employment;
         }
 
         public override string ToString()
         {
             return "Employee: {" +
-                "id: " + Id +
-                "passport: " + Passport +
-                "birthday: " + Birthday +
-                "professionId: " + ProfessionId +
-                "departmentId: " + DepartmentId +
+                "id: " + Id + ", " +
+                "passport: " + Passport + ", " +
+                "birthday: " + Birthday + ", " +
+                "professionId: " + Profession + ", " +
+                "departmentId: " + Department + ", " +
                 "employment: " + Employment +
                 "} ";
         }

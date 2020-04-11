@@ -59,7 +59,7 @@ namespace SalaryWorker.DBWorker.Postgres
             }
             catch (PostgresException e)
             {
-                MessageBox.Show(e.Message + "\n" + e.StackTrace, e.Code, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(e.Message + "\n" + e.StackTrace, e.ErrorCode.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
             finally
@@ -78,15 +78,15 @@ namespace SalaryWorker.DBWorker.Postgres
                 command.Parameters.AddWithValue("p1", employee.Passport);
                 command.Parameters.AddWithValue("p2", employee.Birthday);
                 command.Parameters.AddWithValue("p3", employee.Employment);
-                command.Parameters.AddWithValue("p4", employee.ProfessionId);
-                command.Parameters.AddWithValue("p5", employee.DepartmentId);
+                command.Parameters.AddWithValue("p4", employee.Profession.Id);
+                command.Parameters.AddWithValue("p5", employee.Department.Id);
                 command.ExecuteNonQuery();
                 connection.Close();
                 return true;
             }
             catch (PostgresException e)
             {
-                MessageBox.Show(e.Message + "\n" + e.StackTrace, e.Code, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(e.Message + "\n" + e.StackTrace, e.ErrorCode.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
             finally
@@ -114,7 +114,7 @@ namespace SalaryWorker.DBWorker.Postgres
             }
             catch (PostgresException e)
             {
-                MessageBox.Show(e.Message + "\n" + e.StackTrace, e.Code, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(e.Message + "\n" + e.StackTrace, e.ErrorCode.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
             finally
@@ -150,7 +150,7 @@ namespace SalaryWorker.DBWorker.Postgres
             }
             catch (PostgresException e)
             {
-                MessageBox.Show(e.Message + "\n" + e.StackTrace, e.Code, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(e.Message + "\n" + e.StackTrace, e.ErrorCode.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
             finally
@@ -212,7 +212,7 @@ namespace SalaryWorker.DBWorker.Postgres
             }
             catch (PostgresException e)
             {
-                MessageBox.Show(e.Message + "\n" + e.StackTrace, e.Code, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(e.Message + "\n" + e.StackTrace, e.ErrorCode.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return null;
             }
             finally
@@ -249,7 +249,7 @@ namespace SalaryWorker.DBWorker.Postgres
             }
             catch (PostgresException e)
             {
-                MessageBox.Show(e.Message + "\n" + e.StackTrace, e.Code, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(e.Message + "\n" + e.StackTrace, e.ErrorCode.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return null;
             }
             finally
@@ -260,7 +260,71 @@ namespace SalaryWorker.DBWorker.Postgres
 
         public override List<Payroll> getMonthlyPayroll(int month, int year)
         {
-            return null;
+            try
+            {
+                List<Payroll> list = new List<Payroll>();
+                string query = "SELECT * FROM payroll WHERE _month = @p1 AND _year = @p2;";
+                connection.Open();
+                NpgsqlCommand command = new NpgsqlCommand(query, connection);
+                command.Parameters.AddWithValue("p1", month);
+                command.Parameters.AddWithValue("p2", year);
+                NpgsqlDataReader read = command.ExecuteReader();
+                while (read.Read())
+                {
+                    list.Add(new Payroll((int)read[0], (string)read[1], (decimal)read[4], (string)read[2], (string)read[3]));
+                }
+                connection.Close();
+                return list;
+            }
+            catch (PostgresException e)
+            {
+                MessageBox.Show(e.Message + "\n" + e.StackTrace, e.ErrorCode.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
+
+        public override Employee getEmployeeById(int id)
+        {
+            return new Employee();
+        }
+
+        public override Employee getEmployeeByPassport(string passport)
+        {
+            return new Employee();
+        }
+
+        public override List<Employee> getAllEmployees()
+        {
+            try
+            {
+                List<Employee> list = new List<Employee>();
+                string query = "SELECT * FROM employee_list;";
+                connection.Open();
+                NpgsqlCommand command = new NpgsqlCommand(query, connection);
+                NpgsqlDataReader read = command.ExecuteReader();
+                while (read.Read())
+                {
+                    Profession profession = new Profession((int)read[6], (string)read[7]);
+                    Department department = new Department((int)read[4], (string)read[5]);
+
+                    list.Add(new Employee((int)read[0], (string)read[1], (DateTime)read[2], profession, department, (DateTime)read[2]));
+                }
+                connection.Close();
+                return list;
+            }
+            catch (PostgresException e)
+            {
+                MessageBox.Show(e.Message + "\n" + e.StackTrace, e.ErrorCode.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+            finally
+            {
+                connection.Close();
+            }
         }
     }
 }
