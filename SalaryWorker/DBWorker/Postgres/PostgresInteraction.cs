@@ -53,9 +53,9 @@ namespace SalaryWorker.DBWorker.Postgres
                 connection.Open();
                 NpgsqlCommand command = new NpgsqlCommand(query, connection);
                 command.Parameters.AddWithValue("p1", department.Name);
-                int result = (int)command.ExecuteScalar();
+                command.ExecuteNonQuery();
                 connection.Close();
-                return result != 0;
+                return true;
             }
             catch (PostgresException e)
             {
@@ -100,14 +100,21 @@ namespace SalaryWorker.DBWorker.Postgres
             return false;
         }
 
-        public override bool addProfession(Profession profession)
+        public override bool addProfession(Rates profession)
         {
             try
             {
-                string query = "INSERT INTO profession VALUES(DEFAULT, @p1);";
+                string query = "add_prof";
                 connection.Open();
+                connection.ReloadTypes();
                 NpgsqlCommand command = new NpgsqlCommand(query, connection);
-                command.Parameters.AddWithValue("p1", profession.Name);
+                command.CommandType = System.Data.CommandType.StoredProcedure;
+                /*NpgsqlParameter parameter = new NpgsqlParameter("name_prof", System.Data.DbType.String);
+                parameter.Value = profession.Profession.Name;
+                NpgsqlParameter parameter2 = new NpgsqlParameter("pays", System.Data.DbType.Decimal);
+                parameter2.Value = profession.PayPerHour;*/
+                command.Parameters.AddWithValue("name_prof", profession.Profession.Name);
+                command.Parameters.AddWithValue("pays", profession.PayPerHour);
                 command.ExecuteNonQuery();
                 connection.Close();
                 return true;
@@ -133,17 +140,16 @@ namespace SalaryWorker.DBWorker.Postgres
             return false;
         }
 
-        public override bool changeRates(Rates old, Rates n)
+        public override bool changeRates(Rates n)
         {
             try
             {
-                string query = "UPDATE rates" +
-                               "SET pay_per_hour = @p1" +
-                               "WHERE id_rate = @p2;";
+                Console.WriteLine(n);
+                string query = "UPDATE rates SET pay_for_hour = @p1 WHERE id_rate = @p2;";
                 connection.Open();
                 NpgsqlCommand command = new NpgsqlCommand(query, connection);
                 command.Parameters.AddWithValue("p1", n.PayPerHour);
-                command.Parameters.AddWithValue("p2", old.Id);
+                command.Parameters.AddWithValue("p2", n.Id);
                 command.ExecuteNonQuery();
                 connection.Close();
                 return true;
@@ -171,7 +177,26 @@ namespace SalaryWorker.DBWorker.Postgres
 
         public override bool deleteEmployee(Employee employee)
         {
-            return false;
+            try
+            {
+                Console.WriteLine(employee);
+                string query = "DELETE FROM employee WHERE id_empl = @p1;";
+                connection.Open();
+                NpgsqlCommand command = new NpgsqlCommand(query, connection);
+                command.Parameters.AddWithValue("p1", employee.Id);
+                command.ExecuteNonQuery();
+                connection.Close();
+                return true;
+            }
+            catch (PostgresException e)
+            {
+                MessageBox.Show(e.Message + "\n" + e.StackTrace, e.ErrorCode.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            finally
+            {
+                connection.Close();
+            }
         }
 
         public override bool deletePayout(Payout payout)
@@ -191,7 +216,29 @@ namespace SalaryWorker.DBWorker.Postgres
 
         public override List<Rates> getAllRates()
         {
-            return null;
+            try
+            {
+                List<Rates> list = new List<Rates>();
+                string query = "SELECT * FROM rates_with_prof;";
+                connection.Open();
+                NpgsqlCommand command = new NpgsqlCommand(query, connection);
+                NpgsqlDataReader read = command.ExecuteReader();
+                while (read.Read())
+                {
+                    list.Add(new Rates((int)read[0], (decimal)read[1], (DateTime)read[2], new Profession((int)read[3], (string)read[4]))); ;
+                }
+                connection.Close();
+                return list;
+            }
+            catch (PostgresException e)
+            {
+                MessageBox.Show(e.Message + "\n" + e.StackTrace, e.ErrorCode.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+            finally
+            {
+                connection.Close();
+            }
         }
 
         public override List<Profession> getAllProfession()

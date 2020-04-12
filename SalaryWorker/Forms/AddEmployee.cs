@@ -29,10 +29,8 @@ namespace SalaryWorker.Forms
             departments = PostgresInteraction.GetInstance().getAllDepartment();
             foreach (var item in professions)
                 comboBox1.Items.Add(item.Name);
-            comboBox1.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             foreach (var item in departments)
                 comboBox2.Items.Add(item.Name);
-            comboBox2.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
         }
 
         private void AddEmployee_Load(object sender, EventArgs e)

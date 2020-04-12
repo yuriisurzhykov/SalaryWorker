@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.ListView;
 
 namespace SalaryWorker.Forms
 {
@@ -39,6 +40,17 @@ namespace SalaryWorker.Forms
             ListViewItem temp2 = listView1.Items[0];
             listView1.Items[0] = temp;
             listView1.Items.Add(temp2);
+            listView1.ItemCheck += ListView1_ItemCheck;
+        }
+
+        private void ListView1_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+            amount.Text = e.Index.ToString();
+        }
+
+        private void MenuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
         }
     }
 }

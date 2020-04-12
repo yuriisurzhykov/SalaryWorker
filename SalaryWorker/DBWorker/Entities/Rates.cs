@@ -10,7 +10,7 @@ namespace SalaryWorker.DBWorker.Entities
     class Rates
     {
         public int Id { get; set; }
-        public float PayPerHour { get; set; }
+        public decimal PayPerHour { get; set; }
         public Profession Profession { get; set; }
         public DateTime LastUpdate { get; set; }
 
@@ -22,7 +22,7 @@ namespace SalaryWorker.DBWorker.Entities
             LastUpdate = DateTime.MinValue;
         }
 
-        public Rates(int id, float payPerHour, Profession profession, DateTime lastUpdate)
+        public Rates(int id, decimal payPerHour, DateTime lastUpdate, Profession profession)
         {
             Id = id;
             PayPerHour = payPerHour;
@@ -35,8 +35,8 @@ namespace SalaryWorker.DBWorker.Entities
             return "Rate: {" +
                 "id: " + Id + ", " +
                 "passport: " + PayPerHour + ", " +
-                "birthday: " + Profession.Name + ", " +
-                "professionId: " + LastUpdate +
+                "professionName: " + Profession.Name + ", " +
+                "lastUpdate: " + LastUpdate +
                 "}";
         }
     }

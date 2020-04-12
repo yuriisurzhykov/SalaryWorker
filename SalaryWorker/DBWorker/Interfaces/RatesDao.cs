@@ -11,7 +11,7 @@ namespace SalaryWorker.DBWorker.Interfaces
     {
         bool addRates(Rates rates);
         bool deleteRates(Rates rates);
-        bool changeRates(Rates old, Rates n);
+        bool changeRates(Rates n);
         List<Rates> getAllRates();
     }
 }

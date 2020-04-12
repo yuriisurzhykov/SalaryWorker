@@ -35,12 +35,12 @@ namespace SalaryWorker.DBWorker.Interfaces
         public abstract bool addRates(Rates rates);
         public abstract bool deleteRates(Rates rates);
         public abstract List<Rates> getAllRates();
-        public abstract bool addProfession(Profession profession);
+        public abstract bool addProfession(Rates profession);
         public abstract bool deleteProfession(Profession profession);
         public abstract List<Profession> getAllProfession();
 
         public abstract List<Department> getAllDepartment();
-        public abstract bool changeRates(Rates old, Rates n);
+        public abstract bool changeRates(Rates n);
         public abstract List<Payroll> getMonthlyPayroll(int month, int year);
         public abstract Employee getEmployeeById(int id);
         public abstract Employee getEmployeeByPassport(string passport);

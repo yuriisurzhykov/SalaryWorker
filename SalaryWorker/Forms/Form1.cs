@@ -27,28 +27,7 @@ namespace SalaryWorker
 
         private void Accept_Click(object sender, EventArgs e)
         {
-            PostgresInteraction pg = PostgresInteraction.GetInstance();
-            Profession profession = new Profession(0, name.Text);
-            if (pg.addProfession(profession))
-            {
-                var res = MessageBox.Show("Профессия успешно добавлена!", "Успешно", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                switch (res)
-                {
-                    case DialogResult.OK:
-                        Close();
-                        break;
-                }
-            }
-            else
-            {
-                var res = MessageBox.Show("Что-то пошло не так при добавлении профессии!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                switch (res)
-                {
-                    case DialogResult.OK:
-                        Close();
-                        break;
-                }
-            }
+            
         }
 
         private void Button1_Click(object sender, EventArgs e)
@@ -74,16 +53,6 @@ namespace SalaryWorker
                         break;
                 }
             }
-        }
-
-        private void Label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void TextBox1_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }
