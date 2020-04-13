@@ -54,12 +54,6 @@
     <Compile Include="DBWorker\Entities\Payroll.cs" />
     <Compile Include="DBWorker\Entities\SuperPayroll.cs" />
     <Compile Include="DBWorker\Entities\UpdatePayout.cs" />
-    <Compile Include="Forms\AddEmployee.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\AddEmployee.Designer.cs">
-      <DependentUpon>AddEmployee.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\CreateConnection.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -82,24 +76,6 @@
     <Compile Include="DBWorker\Interfaces\RatesDao.cs" />
     <Compile Include="DBWorker\Postgres\PostgresConnection.cs" />
     <Compile Include="DBWorker\Postgres\PostgresInteraction.cs" />
-    <Compile Include="Forms\DeletingEmployee.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\DeletingEmployee.Designer.cs">
-      <DependentUpon>DeletingEmployee.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\FirstForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\FirstForm.Designer.cs">
-      <DependentUpon>FirstForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -108,20 +84,8 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Forms\AddEmployee.resx">
-      <DependentUpon>AddEmployee.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\CreateConnection.resx">
       <DependentUpon>CreateConnection.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\DeletingEmployee.resx">
-      <DependentUpon>DeletingEmployee.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FirstForm.resx">
-      <DependentUpon>FirstForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
