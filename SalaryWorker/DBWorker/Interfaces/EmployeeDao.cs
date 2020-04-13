@@ -14,7 +14,7 @@ namespace SalaryWorker.DBWorker.Interfaces
         Employee getEmployeeById(int id);
         Employee getEmployeeByPassport(string passport);
         List<Employee> getAllEmployees();
-        List<Employee> getBadEmployees();
+        List<BadEmployee> getBadEmployees(int month, int year);
         List<Employee> getEmployeeByDepartmentName(string name);
     }
 }

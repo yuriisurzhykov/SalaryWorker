@@ -8,6 +8,7 @@ namespace SalaryWorker.DBWorker.Interfaces
         bool addDepartment(Department department);
         bool deleteDepartment(Department department);
         List<Payroll> getMonthlyPayroll(int month, int year);
+        List<Payroll> getAllPayroll();
         List<Department> getAllDepartment();
     }
 }

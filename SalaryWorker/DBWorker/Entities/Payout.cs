@@ -13,6 +13,7 @@ namespace SalaryWorker.DBWorker.Entities
         public DateTime Date { get; set; }
         public decimal IssuedBy { get; set; }
         public Employee Employee { get; set; }
+        public int AmountHours { get; set; }
 
         public Payout()
         {
@@ -22,11 +23,12 @@ namespace SalaryWorker.DBWorker.Entities
             Employee = new Employee();
         }
 
-        public Payout(int id, DateTime date, decimal issuedBy, Employee employee)
+        public Payout(int id, DateTime date, decimal issuedBy, int amountHours, Employee employee)
         {
             Id = id;
             Date = date;
             IssuedBy = issuedBy;
+            AmountHours = amountHours;
             Employee = employee;
         }
 
@@ -34,8 +36,10 @@ namespace SalaryWorker.DBWorker.Entities
         {
             return "Employee: {" +
                 "id: " + Id + ", " +
-                "passport: " + Date + ", " +
-                "birthday: " + IssuedBy +
+                "date: " + Date + ", " +
+                "issuedBy: " + IssuedBy + ", " +
+                "employee: " + Employee + ", " +
+                "amountHours: " + AmountHours +
                 "} ";
         }
     }

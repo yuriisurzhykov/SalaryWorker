@@ -9,8 +9,6 @@ namespace SalaryWorker.DBWorker.Interfaces
 {
     abstract class DBInteraction : DepartmentDao, CalculationDao, EmployeeDao, PayoutDao, ProfessionDao, RatesDao
     {
-        protected CalculationDao CalculationDao { get; set; }
-
         public abstract bool addCalculation(Calculation calculation);
 
         public abstract bool addDepartment(Department department);
@@ -29,7 +27,7 @@ namespace SalaryWorker.DBWorker.Interfaces
 
         public abstract bool deletePayout(Payout payout);
 
-        public abstract List<Employee> getBadEmployees();
+        public abstract List<BadEmployee> getBadEmployees(int month, int year);
 
         public abstract List<Employee> getEmployeeByDepartmentName(string name);
         public abstract bool addRates(Rates rates);
@@ -45,5 +43,7 @@ namespace SalaryWorker.DBWorker.Interfaces
         public abstract Employee getEmployeeById(int id);
         public abstract Employee getEmployeeByPassport(string passport);
         public abstract List<Employee> getAllEmployees();
+        public abstract bool upadtePayout(Payout payout);
+        public abstract List<Payroll> getAllPayroll();
     }
 }

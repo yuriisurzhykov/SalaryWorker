@@ -50,7 +50,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Attributes\SqlQuery.cs" />
+    <Compile Include="DBWorker\Entities\BadEmployee.cs" />
     <Compile Include="DBWorker\Entities\Payroll.cs" />
+    <Compile Include="DBWorker\Entities\SuperPayroll.cs" />
+    <Compile Include="DBWorker\Entities\UpdatePayout.cs" />
     <Compile Include="Forms\AddEmployee.cs">
       <SubType>Form</SubType>
     </Compile>

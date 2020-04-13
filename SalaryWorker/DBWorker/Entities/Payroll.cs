@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NpgsqlTypes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -41,6 +42,18 @@ namespace SalaryWorker.DBWorker.Entities
             Department.Name = depName;
             Profession = new Profession();
             Profession.Name = profName;
+        }
+
+        public override string ToString()
+        {
+            return "Payroll: {" +
+                "id: " + ID + ", "+
+                "employeePassport: " + Employee.Passport + "," +
+                "issuedBy: " + Payout.IssuedBy + "," +
+                "DepName: " + Department.Name + "," +
+                "ProfName: " + Profession.Name +
+                " }";
+
         }
     }
 }

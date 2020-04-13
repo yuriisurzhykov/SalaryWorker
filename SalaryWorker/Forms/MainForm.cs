@@ -18,19 +18,26 @@ namespace SalaryWorker.Forms
     {
         private bool isMonthSelected = false;
         private bool isYearSelected = false;
+
         private Employee employee;
+        private Payout payout;
+        private Payroll payrollItem;
         private readonly string[] months = new string[12] { "Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь" };
-        private List<Profession> professions = new List<Profession>();
+        private List<Rates> rates = new List<Rates>();
         private List<Department> departments = new List<Department>();
         private List<Profession> professionEditing = new List<Profession>();
         private List<Rates> editingRates = new List<Rates>();
-        private List<Employee> employeesDeleting = new List<Employee>();
+        private List<Employee> employeesList = new List<Employee>();
+        private List<int> selectedEmployees = new List<int>();
+        private List<Payroll> payrolls = new List<Payroll>();
         private string passPattern = "([A-Z]{2}[0-9]{6}$)|([А-Я]{2}[0-9]{6}$)|([0-9]{9}$)";
 
         public MainForm()
         {
             InitializeComponent();
             employee = new Employee();
+            payout = new Payout();
+            payrollItem = new Payroll();
         }
 
         private void Month_comboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -42,17 +49,17 @@ namespace SalaryWorker.Forms
         {
             if (isYearSelected && isMonthSelected)
             {
-                this.payroll.Items.Clear();
+                payroll.Items.Clear();
                 int month = month_comboBox.SelectedIndex + 1;
                 int year = (int)year_comboBox.SelectedItem;
                 Console.WriteLine(month + ", " + year);
-                List<Payroll> payroll = PostgresInteraction.GetInstance()
-                                                           .getMonthlyPayroll(month, year);
-                foreach (var item in payroll)
+                payrolls.Clear();
+                payrolls = PostgresInteraction.GetInstance().getMonthlyPayroll(month, year);
+                foreach (var item in payrolls)
                 {
                     ListViewItem item1 = new ListViewItem(item.ID.ToString());
                     item1.SubItems.AddRange(new string[] { item.Employee.Passport, item.Department.Name, item.Profession.Name, item.Payout.IssuedBy.ToString() });
-                    this.payroll.Items.Add(item1);
+                    payroll.Items.Add(item1);
                 }
             }
             else
@@ -69,10 +76,10 @@ namespace SalaryWorker.Forms
         private void MainForm_Load(object sender, EventArgs e)
         {
             employee = new Employee();
-            professions = PostgresInteraction.GetInstance().getAllProfession();
+            rates = PostgresInteraction.GetInstance().getAllRates();
             departments = PostgresInteraction.GetInstance().getAllDepartment();
-            foreach (var item in professions)
-                profession_box.Items.Add(item.Name);
+            foreach (var item in rates)
+                profession_box.Items.Add(item.Profession.Name);
             foreach (var item in departments)
                 department_box.Items.Add(item.Name);
             birthday_picker.MaxDate = DateTime.Now;
@@ -84,9 +91,14 @@ namespace SalaryWorker.Forms
 
         private void EditingTabControl_Selected(object sender, TabControlEventArgs e)
         {
+            EditingTabControl(e.TabPageIndex);
+        }
+
+        private void EditingTabControl(int index)
+        {
             isMonthSelected = false;
             isYearSelected = false;
-            switch (e.TabPageIndex)
+            switch (index)
             {
                 case 0:
                     professionsList.Items.Clear();
@@ -99,6 +111,16 @@ namespace SalaryWorker.Forms
                     }
                     break;
                 case 1:
+                    payrolls.Clear();
+                    payrolls = PostgresInteraction.GetInstance().getAllPayroll();
+                    payoutChange.Items.Clear();
+                    foreach (var item in payrolls)
+                    {
+                        SuperPayroll superPayroll = item as SuperPayroll;
+                        ListViewItem item1 = new ListViewItem(item.ID.ToString());
+                        item1.SubItems.AddRange(new string[] { superPayroll.Employee.Passport, superPayroll.Department.Name, superPayroll.Profession.Name, superPayroll.Payout.IssuedBy.ToString(), superPayroll.Date.ToShortDateString() });
+                        payoutChange.Items.Add(item1);
+                    }
                     break;
             }
         }
@@ -119,52 +141,30 @@ namespace SalaryWorker.Forms
                     }
                     break;
                 case 2:
-                    if (tabControl1.SelectedTab.Name == "addEmployee")
-                    {
-                        professions = PostgresInteraction.GetInstance().getAllProfession();
-                        departments = PostgresInteraction.GetInstance().getAllDepartment();
-                        profession_box.Items.Clear();
-                        department_box.Items.Clear();
-                        foreach (var item in professions)
-                            profession_box.Items.Add(item.Name);
-                        foreach (var item in departments)
-                            department_box.Items.Add(item.Name);
-                        birthday_picker.MaxDate = DateTime.Now;
-                        employment_picker.MaxDate = DateTime.Now;
-                    }
+                    EmployeeTabControll(tabControl1.SelectedIndex);
                     break;
                 case 3:
-                    if (editingTabControl.SelectedIndex == 0)
-                    {
-                        professionsList.Items.Clear();
-                        editingRates.Clear();
-                        editingRates = PostgresInteraction.GetInstance().getAllRates();
-                        foreach (var item in editingRates)
-                        {
-                            ListViewItem item1 = new ListViewItem(item.Profession.Name);
-                            professionsList.Items.Add(item1);
-                        }
-                    }
+                    EditingTabControl(editingTabControl.SelectedIndex);
                     break;
             }
         }
 
-        private void TabControl1_Selected(object sender, TabControlEventArgs e)
+        private void EmployeeTabControll(int pageIndex)
         {
             isMonthSelected = false;
             isYearSelected = false;
-            switch (e.TabPageIndex)
+            switch (pageIndex)
             {
                 case 0:
                     birthday_picker.MaxDate = DateTime.Now;
                     employment_picker.MaxDate = DateTime.Now;
                     employee = new Employee();
-                    professions = PostgresInteraction.GetInstance().getAllProfession();
+                    rates = PostgresInteraction.GetInstance().getAllRates();
                     departments = PostgresInteraction.GetInstance().getAllDepartment();
                     profession_box.Items.Clear();
                     department_box.Items.Clear();
-                    foreach (var item in professions)
-                        profession_box.Items.Add(item.Name);
+                    foreach (var item in rates)
+                        profession_box.Items.Add(item.Profession.Name);
                     foreach (var item in departments)
                         department_box.Items.Add(item.Name);
                     break;
@@ -172,9 +172,9 @@ namespace SalaryWorker.Forms
                     Console.WriteLine("Удалить сотрудника");
                     employee_list.View = View.Details;
                     employee_list.Items.Clear();
-                    employeesDeleting.Clear();
-                    employeesDeleting = PostgresInteraction.GetInstance().getAllEmployees();
-                    foreach (var item in employeesDeleting)
+                    employeesList.Clear();
+                    employeesList = PostgresInteraction.GetInstance().getAllEmployees();
+                    foreach (var item in employeesList)
                     {
                         ListViewItem item1 = new ListViewItem(item.Id.ToString());
                         item1.SubItems.AddRange(new string[] { item.Passport, item.Birthday.ToShortDateString(), item.Profession.Name, item.Department.Name, item.Employment.ToShortDateString() });
@@ -182,9 +182,25 @@ namespace SalaryWorker.Forms
                     }
                     break;
                 case 2:
+                    employeesList = PostgresInteraction.GetInstance().getAllEmployees();
+                    employeePayout.Items.Clear();
+                    monthsPayout.Items.Clear();
+                    numericUpDown1.Maximum = 100;
+                    numericUpDown1.Minimum = 1;
+                    foreach (var item in employeesList)
+                    {
+                        ListViewItem item1 = new ListViewItem(item.Id.ToString());
+                        item1.SubItems.AddRange(new string[] { item.Passport, item.Profession.Name, item.Department.Name });
+                        employeePayout.Items.Add(item1);
+                    }
+                    for(int i = 0; i < DateTime.Today.Month; i++)
+                    {
+                        monthsPayout.Items.Add(months[i]);
+                    }
                     break;
                 case 3:
                     yearWorst.Items.Clear();
+                    monthsWorst.Items.Clear();
                     for (int i = 0; i < months.Length; i++)
                     {
                         monthsWorst.Items.Add(months[i]);
@@ -197,16 +213,14 @@ namespace SalaryWorker.Forms
             }
         }
 
+        private void TabControl1_Selected(object sender, TabControlEventArgs e)
+        {
+            EmployeeTabControll(e.TabPageIndex);
+        }
+
         private void TextBox2_TextChanged(object sender, EventArgs e)
         {
-            if (!Regex.IsMatch(passport_search_field.Text, passPattern))
-            {
-                passport_search_field.ForeColor = Color.Red;
-            }
-            else
-            {
-                passport_search_field.ForeColor = Color.Black;
-            }
+
         }
 
         private void TextBox2_TextChanged_1(object sender, EventArgs e)
@@ -239,10 +253,12 @@ namespace SalaryWorker.Forms
             {
                 if (PostgresInteraction.GetInstance().addEmployee(employee))
                 {
+                    employeesList.Add(employee);
                     MessageBox.Show("Сотрудник успешно добавлен!", "Успешно", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
+                    Console.WriteLine(employee);
                     MessageBox.Show("Что-то пошло не так при добавлении сотрудника!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
@@ -262,7 +278,7 @@ namespace SalaryWorker.Forms
 
         private void Profession_box_SelectedIndexChanged(object sender, EventArgs e)
         {
-            employee.Profession.Id = professions[profession_box.SelectedIndex].Id;
+            employee.Profession.Id = rates[profession_box.SelectedIndex].Profession.Id;
             Console.WriteLine(employee);
         }
 
@@ -297,14 +313,21 @@ namespace SalaryWorker.Forms
 
         private void Button3_Click_1(object sender, EventArgs e)
         {
-            Department dep = new Department(0, dep_name.Text);
-            if (PostgresInteraction.GetInstance().addDepartment(dep))
+            if(!string.IsNullOrEmpty(dep_name.Text))
             {
-                MessageBox.Show("Отдел успешно добавлен!", "Успешно", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Department dep = new Department(0, dep_name.Text);
+                if (PostgresInteraction.GetInstance().addDepartment(dep))
+                {
+                    MessageBox.Show("Отдел успешно добавлен!", "Успешно", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Что-то пошло не так при добавлении отдела!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             else
             {
-                MessageBox.Show("Что-то пошло не так при добавлении отдела!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Введите название отдела!", "Нет данных", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -391,10 +414,15 @@ namespace SalaryWorker.Forms
                     bool successful = true;
                     for (int i = 0; i < employee_list.CheckedItems.Count; i++)
                     {
-                        if (!PostgresInteraction.GetInstance().deleteEmployee(employeesDeleting[i]))
+                        if (!PostgresInteraction.GetInstance().deleteEmployee(employeesList[i]))
                         {
                             successful = false;
                             break;
+                        }
+                        else
+                        {
+                            employeesList.RemoveAt(i);
+                            employee_list.Items.RemoveAt(i);
                         }
                     }
                     if (successful)
@@ -411,13 +439,256 @@ namespace SalaryWorker.Forms
 
         private void Button4_Click(object sender, EventArgs e)
         {
-            List<Employee> employees = PostgresInteraction.GetInstance().getBadEmployees();
-            foreach(var item in employees)
+            if(monthsWorst.SelectedItem != null || yearWorst.SelectedItem != null)
             {
-                ListViewItem item1 = new ListViewItem(item.Id.ToString());
-                item1.SubItems.AddRange(new string[] { item.Passport, item.Profession.Name, item.Department.Name, item.Employment.ToShortDateString(), });
-                badEmployeeView.Items.Add(item1);
+                badEmployeeView.Items.Clear();
+                List<BadEmployee> employees = PostgresInteraction.GetInstance().getBadEmployees(monthsWorst.SelectedIndex + 1, (int)yearWorst.SelectedItem);
+                foreach (var item in employees)
+                {
+                    ListViewItem item1 = new ListViewItem(item.Id.ToString());
+                    item1.SubItems.AddRange(new string[] { item.Passport, item.Profession.Name, item.Department.Name, item.Employment.ToShortDateString(), item.AmountHours.ToString() });
+                    badEmployeeView.Items.Add(item1);
+                }
             }
+        }
+
+        private void TextBox3_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            // only allow one decimal point
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void Button5_Click(object sender, EventArgs e)
+        {
+            if(employeePayout.CheckedItems.Count != 0)
+            {
+                if(payout.IssuedBy == 0 ||
+                   payout.Date == DateTime.MinValue ||
+                   payout.AmountHours == 0)
+                {
+                    MessageBox.Show("Не все поля для добавления платежа заполнены!", "Не все данные получены!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else
+                {
+                    int amountEmployees = employeePayout.CheckedItems.Count;
+                    bool isSuccessful = true;
+                    for (int i = 0; i < amountEmployees; i++)
+                    {
+                        payout.Employee = employeesList[employeePayout.CheckedItems[i].Index];
+                        if (!PostgresInteraction.GetInstance().addPayout(payout))
+                        {
+                            isSuccessful = false;
+                            break;
+                        }
+                    }
+                    if (isSuccessful)
+                    {
+                        MessageBox.Show("Для " + amountEmployees + " сотрудников создан платеж " + payout.IssuedBy, "Успешно", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("При создании платежа что-то пошло не так!", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Вы не выбрали ни одного сотрудника!", "Не все данные получены!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void Label16_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ListView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(employeePayout.SelectedItems.Count != 0)
+            {
+                payout.Employee.Id = employeesList[employeePayout.SelectedItems[0].Index].Id;
+            }
+            Console.WriteLine(payout.Employee);
+        }
+
+        private void Label17_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TextBox3_TextChanged(object sender, EventArgs e)
+        {
+            if(!string.IsNullOrEmpty(textBox3.Text))
+            {
+                payout.IssuedBy = decimal.Parse(textBox3.Text);
+                Console.WriteLine(payout);
+            }
+        }
+
+        private void Label19_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void MonthsPayout_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            payout.Date = new DateTime(DateTime.Now.Year, monthsPayout.SelectedIndex + 1, 1);
+            Console.WriteLine(payout.Date);
+        }
+
+        private void NumericUpDown1_ValueChanged(object sender, EventArgs e)
+        {
+            payout.AmountHours = (int)numericUpDown1.Value;
+        }
+
+        private void EmployeePayout_ItemChecked(object sender, ItemCheckedEventArgs e)
+        {
+            if(e.Item.Checked)
+            {
+                selectedEmployees.Add(employeesList[e.Item.Index].Id);
+                Console.WriteLine(selectedEmployees.Count);
+            }
+            else
+            {
+                selectedEmployees.Remove(employeesList[e.Item.Index].Id);
+                Console.WriteLine(selectedEmployees.Count);
+            }
+        }
+
+        private void ListView1_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            if (payoutChange.SelectedItems.Count != 0)
+            {
+                payrollItem = payrolls[payoutChange.SelectedItems[0].Index];
+                Console.WriteLine(payrollItem);
+                employeePayoutName.Text = payrollItem.Employee.Passport;
+                datePayoutChange.Text = ((SuperPayroll)payrollItem).Date.ToShortDateString();
+            }
+        }
+
+        private void TextBox4_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            // only allow one decimal point
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void Label24_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Button6_Click(object sender, EventArgs e)
+        {
+            if((payrollItem as SuperPayroll).Date == DateTime.MinValue ||
+                payrollItem.ID == 0 ||
+                payrollItem.Payout.IssuedBy != decimal.Parse(textBox4.Text))
+            {
+                MessageBox.Show("Не выбрана выплата либо не введено новое значение!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                if(PostgresInteraction.GetInstance().upadtePayout(new Payout(payrollItem.ID, 
+                                                                            ((SuperPayroll)payrollItem).Date, 
+                                                                            payrollItem.Payout.IssuedBy, 
+                                                                            0, 
+                                                                            payrollItem.Employee)))
+                {
+                    EditingTabControl(editingTabControl.SelectedIndex);
+                    MessageBox.Show("Данные успешно изменены!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("При изменении что-то пошло не так!", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void TextBox4_TextChanged(object sender, EventArgs e)
+        {
+            payrollItem.Payout.IssuedBy = decimal.Parse(textBox4.Text);
+        }
+
+        private void СменитьПодключениеToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PostgresConnection.Reconnection();
+        }
+
+        private void ДоабвитьСотрудникаToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void НачислениеЗарплатыToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void СоздатьРасчетToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ДобавитьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            mainTabControl.SelectedIndex = 2;
+            tabControl1.SelectedIndex = 0;
+        }
+
+        private void УдалитьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            mainTabControl.SelectedIndex = 2;
+            tabControl1.SelectedIndex = 1;
+        }
+
+        private void ВыйтиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void ВедомостьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            mainTabControl.SelectedIndex = 1;
+        }
+
+        private void СоздатьРасчетToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            mainTabControl.SelectedIndex = 4;
+        }
+
+        private void Button7_Click(object sender, EventArgs e)
+        {
+            mainTabControl.SelectedIndex = 2;
+        }
+
+        private void Button8_Click(object sender, EventArgs e)
+        {
+            mainTabControl.SelectedIndex = 3;
+        }
+
+        private void Button9_Click(object sender, EventArgs e)
+        {
+            mainTabControl.SelectedIndex = 4;
+        }
+
+        private void Button10_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

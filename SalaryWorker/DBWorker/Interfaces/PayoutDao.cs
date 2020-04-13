@@ -11,5 +11,6 @@ namespace SalaryWorker.DBWorker.Interfaces
     {
         bool addPayout(Payout payout);
         bool deletePayout(Payout payout);
+        bool upadtePayout(Payout payout);
     }
 }

@@ -38,7 +38,6 @@
             this.связьСРазработчикомToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.подключениеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.сменитьПодключениеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.закрытьПодключениеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mainTabControl = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
@@ -66,9 +65,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.passport_field = new System.Windows.Forms.TextBox();
             this.deleteEmployee = new System.Windows.Forms.TabPage();
-            this.finder = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
-            this.passport_search_field = new System.Windows.Forms.TextBox();
             this.delete_button = new System.Windows.Forms.Button();
             this.amount = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -80,6 +76,19 @@
             this.State = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Employment = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.createPayout = new System.Windows.Forms.TabPage();
+            this.label19 = new System.Windows.Forms.Label();
+            this.monthsPayout = new System.Windows.Forms.ComboBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.label17 = new System.Windows.Forms.Label();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.employeePayout = new System.Windows.Forms.ListView();
+            this.columnHeader11 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader12 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader13 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader14 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.button5 = new System.Windows.Forms.Button();
             this.worstEmployee = new System.Windows.Forms.TabPage();
             this.badEmployeeView = new System.Windows.Forms.ListView();
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -105,6 +114,21 @@
             this.professionsList = new System.Windows.Forms.ListView();
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.editPayout = new System.Windows.Forms.TabPage();
+            this.datePayoutChange = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.button6 = new System.Windows.Forms.Button();
+            this.label22 = new System.Windows.Forms.Label();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.employeePayoutName = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.payoutChange = new System.Windows.Forms.ListView();
+            this.columnHeader15 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader16 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader17 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader18 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader19 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader20 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabPage7 = new System.Windows.Forms.TabPage();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage12 = new System.Windows.Forms.TabPage();
@@ -117,17 +141,28 @@
             this.label9 = new System.Windows.Forms.Label();
             this.accept = new System.Windows.Forms.Button();
             this.prof_name = new System.Windows.Forms.TextBox();
+            this.ведомостьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.добавитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.удалитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.button7 = new System.Windows.Forms.Button();
+            this.button8 = new System.Windows.Forms.Button();
+            this.button9 = new System.Windows.Forms.Button();
+            this.button10 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.mainTabControl.SuspendLayout();
+            this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.addEmployee.SuspendLayout();
             this.deleteEmployee.SuspendLayout();
+            this.createPayout.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.worstEmployee.SuspendLayout();
             this.tabPage4.SuspendLayout();
             this.editingTabControl.SuspendLayout();
             this.editRate.SuspendLayout();
+            this.editPayout.SuspendLayout();
             this.tabPage7.SuspendLayout();
             this.tabControl2.SuspendLayout();
             this.tabPage12.SuspendLayout();
@@ -150,6 +185,7 @@
             // 
             this.основноеToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.доабвитьСотрудникаToolStripMenuItem,
+            this.ведомостьToolStripMenuItem,
             this.начислениеЗарплатыToolStripMenuItem,
             this.создатьРасчетToolStripMenuItem,
             this.выйтиToolStripMenuItem});
@@ -159,27 +195,34 @@
             // 
             // доабвитьСотрудникаToolStripMenuItem
             // 
+            this.доабвитьСотрудникаToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.добавитьToolStripMenuItem,
+            this.удалитьToolStripMenuItem});
             this.доабвитьСотрудникаToolStripMenuItem.Name = "доабвитьСотрудникаToolStripMenuItem";
-            this.доабвитьСотрудникаToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
-            this.доабвитьСотрудникаToolStripMenuItem.Text = "Доабвить сотрудника";
+            this.доабвитьСотрудникаToolStripMenuItem.Size = new System.Drawing.Size(282, 22);
+            this.доабвитьСотрудникаToolStripMenuItem.Text = "Сотрудники";
+            this.доабвитьСотрудникаToolStripMenuItem.Click += new System.EventHandler(this.ДоабвитьСотрудникаToolStripMenuItem_Click);
             // 
             // начислениеЗарплатыToolStripMenuItem
             // 
             this.начислениеЗарплатыToolStripMenuItem.Name = "начислениеЗарплатыToolStripMenuItem";
-            this.начислениеЗарплатыToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
+            this.начислениеЗарплатыToolStripMenuItem.Size = new System.Drawing.Size(282, 22);
             this.начислениеЗарплатыToolStripMenuItem.Text = "Начисление зарплаты";
+            this.начислениеЗарплатыToolStripMenuItem.Click += new System.EventHandler(this.НачислениеЗарплатыToolStripMenuItem_Click);
             // 
             // создатьРасчетToolStripMenuItem
             // 
             this.создатьРасчетToolStripMenuItem.Name = "создатьРасчетToolStripMenuItem";
-            this.создатьРасчетToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
-            this.создатьРасчетToolStripMenuItem.Text = "Создать расчет";
+            this.создатьРасчетToolStripMenuItem.Size = new System.Drawing.Size(282, 22);
+            this.создатьРасчетToolStripMenuItem.Text = "Добавление профессии/организации";
+            this.создатьРасчетToolStripMenuItem.Click += new System.EventHandler(this.СоздатьРасчетToolStripMenuItem_Click_1);
             // 
             // выйтиToolStripMenuItem
             // 
             this.выйтиToolStripMenuItem.Name = "выйтиToolStripMenuItem";
-            this.выйтиToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
+            this.выйтиToolStripMenuItem.Size = new System.Drawing.Size(282, 22);
             this.выйтиToolStripMenuItem.Text = "Выйти";
+            this.выйтиToolStripMenuItem.Click += new System.EventHandler(this.ВыйтиToolStripMenuItem_Click);
             // 
             // помощьToolStripMenuItem
             // 
@@ -198,8 +241,7 @@
             // подключениеToolStripMenuItem
             // 
             this.подключениеToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.сменитьПодключениеToolStripMenuItem,
-            this.закрытьПодключениеToolStripMenuItem});
+            this.сменитьПодключениеToolStripMenuItem});
             this.подключениеToolStripMenuItem.Name = "подключениеToolStripMenuItem";
             this.подключениеToolStripMenuItem.Size = new System.Drawing.Size(97, 20);
             this.подключениеToolStripMenuItem.Text = "Подключение";
@@ -209,12 +251,7 @@
             this.сменитьПодключениеToolStripMenuItem.Name = "сменитьПодключениеToolStripMenuItem";
             this.сменитьПодключениеToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
             this.сменитьПодключениеToolStripMenuItem.Text = "Сменить подключение";
-            // 
-            // закрытьПодключениеToolStripMenuItem
-            // 
-            this.закрытьПодключениеToolStripMenuItem.Name = "закрытьПодключениеToolStripMenuItem";
-            this.закрытьПодключениеToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
-            this.закрытьПодключениеToolStripMenuItem.Text = "Закрыть подключение";
+            this.сменитьПодключениеToolStripMenuItem.Click += new System.EventHandler(this.СменитьПодключениеToolStripMenuItem_Click);
             // 
             // mainTabControl
             // 
@@ -230,10 +267,14 @@
             this.mainTabControl.Name = "mainTabControl";
             this.mainTabControl.SelectedIndex = 0;
             this.mainTabControl.Size = new System.Drawing.Size(913, 497);
-            this.mainTabControl.TabIndex = 2;
+            this.mainTabControl.TabIndex = 0;
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.button10);
+            this.tabPage1.Controls.Add(this.button9);
+            this.tabPage1.Controls.Add(this.button8);
+            this.tabPage1.Controls.Add(this.button7);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -267,7 +308,7 @@
             this.generate.Name = "generate";
             this.generate.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.generate.Size = new System.Drawing.Size(105, 23);
-            this.generate.TabIndex = 9;
+            this.generate.TabIndex = 3;
             this.generate.Text = "Получить отчет";
             this.generate.UseVisualStyleBackColor = true;
             this.generate.Click += new System.EventHandler(this.Generate_Click);
@@ -284,7 +325,7 @@
             this.year_comboBox.Name = "year_comboBox";
             this.year_comboBox.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.year_comboBox.Size = new System.Drawing.Size(130, 21);
-            this.year_comboBox.TabIndex = 8;
+            this.year_comboBox.TabIndex = 2;
             this.year_comboBox.Text = "Год";
             this.year_comboBox.SelectedIndexChanged += new System.EventHandler(this.Year_comboBox_SelectedIndexChanged_1);
             // 
@@ -312,7 +353,7 @@
             this.month_comboBox.Name = "month_comboBox";
             this.month_comboBox.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.month_comboBox.Size = new System.Drawing.Size(100, 21);
-            this.month_comboBox.TabIndex = 7;
+            this.month_comboBox.TabIndex = 1;
             this.month_comboBox.Text = "Месяц";
             this.month_comboBox.SelectedIndexChanged += new System.EventHandler(this.Month_comboBox_SelectedIndexChanged);
             // 
@@ -393,7 +434,6 @@
             // addEmployee
             // 
             this.addEmployee.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.addEmployee.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.addEmployee.Controls.Add(this.button2);
             this.addEmployee.Controls.Add(this.label5);
             this.addEmployee.Controls.Add(this.label4);
@@ -418,7 +458,8 @@
             this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(184, 52);
-            this.button2.TabIndex = 18;
+            this.button2.TabIndex = 9;
+            this.button2.TabStop = false;
             this.button2.Text = "Добавить";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.Button2_Click_1);
@@ -447,31 +488,34 @@
             // 
             // department_box
             // 
+            this.department_box.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.department_box.FormattingEnabled = true;
             this.department_box.Location = new System.Drawing.Point(541, 240);
             this.department_box.Margin = new System.Windows.Forms.Padding(4);
             this.department_box.Name = "department_box";
-            this.department_box.Size = new System.Drawing.Size(296, 21);
-            this.department_box.TabIndex = 14;
+            this.department_box.Size = new System.Drawing.Size(296, 26);
+            this.department_box.TabIndex = 8;
             this.department_box.SelectedIndexChanged += new System.EventHandler(this.Department_box_SelectedIndexChanged);
             // 
             // profession_box
             // 
+            this.profession_box.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.profession_box.FormattingEnabled = true;
             this.profession_box.Location = new System.Drawing.Point(541, 157);
             this.profession_box.Margin = new System.Windows.Forms.Padding(4);
             this.profession_box.Name = "profession_box";
-            this.profession_box.Size = new System.Drawing.Size(296, 21);
-            this.profession_box.TabIndex = 15;
+            this.profession_box.Size = new System.Drawing.Size(296, 26);
+            this.profession_box.TabIndex = 6;
             this.profession_box.SelectedIndexChanged += new System.EventHandler(this.Profession_box_SelectedIndexChanged);
             // 
             // employment_picker
             // 
+            this.employment_picker.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.employment_picker.Location = new System.Drawing.Point(72, 240);
             this.employment_picker.Margin = new System.Windows.Forms.Padding(4);
             this.employment_picker.Name = "employment_picker";
-            this.employment_picker.Size = new System.Drawing.Size(298, 20);
-            this.employment_picker.TabIndex = 12;
+            this.employment_picker.Size = new System.Drawing.Size(298, 24);
+            this.employment_picker.TabIndex = 7;
             this.employment_picker.ValueChanged += new System.EventHandler(this.Employment_picker_ValueChanged);
             // 
             // label3
@@ -487,11 +531,12 @@
             // 
             // birthday_picker
             // 
+            this.birthday_picker.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.birthday_picker.Location = new System.Drawing.Point(72, 157);
             this.birthday_picker.Margin = new System.Windows.Forms.Padding(4);
             this.birthday_picker.Name = "birthday_picker";
-            this.birthday_picker.Size = new System.Drawing.Size(298, 20);
-            this.birthday_picker.TabIndex = 13;
+            this.birthday_picker.Size = new System.Drawing.Size(298, 24);
+            this.birthday_picker.TabIndex = 5;
             this.birthday_picker.ValueChanged += new System.EventHandler(this.Birthday_picker_ValueChanged);
             // 
             // label2
@@ -525,15 +570,12 @@
             this.passport_field.MaxLength = 9;
             this.passport_field.Name = "passport_field";
             this.passport_field.Size = new System.Drawing.Size(223, 24);
-            this.passport_field.TabIndex = 8;
+            this.passport_field.TabIndex = 4;
             this.passport_field.TextChanged += new System.EventHandler(this.TextBox2_TextChanged_1);
             // 
             // deleteEmployee
             // 
             this.deleteEmployee.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.deleteEmployee.Controls.Add(this.finder);
-            this.deleteEmployee.Controls.Add(this.label6);
-            this.deleteEmployee.Controls.Add(this.passport_search_field);
             this.deleteEmployee.Controls.Add(this.delete_button);
             this.deleteEmployee.Controls.Add(this.amount);
             this.deleteEmployee.Controls.Add(this.label7);
@@ -545,40 +587,13 @@
             this.deleteEmployee.TabIndex = 1;
             this.deleteEmployee.Text = "Удалить сотрудника";
             // 
-            // finder
-            // 
-            this.finder.Location = new System.Drawing.Point(154, 51);
-            this.finder.Name = "finder";
-            this.finder.Size = new System.Drawing.Size(75, 23);
-            this.finder.TabIndex = 19;
-            this.finder.Text = "Найти";
-            this.finder.UseVisualStyleBackColor = true;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(8, 29);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(140, 13);
-            this.label6.TabIndex = 18;
-            this.label6.Text = "Введите номер пасспорта";
-            // 
-            // passport_search_field
-            // 
-            this.passport_search_field.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.passport_search_field.Location = new System.Drawing.Point(8, 51);
-            this.passport_search_field.Name = "passport_search_field";
-            this.passport_search_field.Size = new System.Drawing.Size(140, 23);
-            this.passport_search_field.TabIndex = 17;
-            this.passport_search_field.TextChanged += new System.EventHandler(this.TextBox2_TextChanged);
-            // 
             // delete_button
             // 
             this.delete_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.delete_button.Location = new System.Drawing.Point(765, 395);
             this.delete_button.Name = "delete_button";
             this.delete_button.Size = new System.Drawing.Size(75, 23);
-            this.delete_button.TabIndex = 16;
+            this.delete_button.TabIndex = 12;
             this.delete_button.Text = "Удалить";
             this.delete_button.UseVisualStyleBackColor = true;
             this.delete_button.Click += new System.EventHandler(this.Delete_button_Click);
@@ -611,6 +626,7 @@
             this.employee_list.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.employee_list.BackColor = System.Drawing.Color.Honeydew;
             this.employee_list.CheckBoxes = true;
             this.employee_list.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
@@ -622,9 +638,9 @@
             this.employee_list.FullRowSelect = true;
             this.employee_list.GridLines = true;
             this.employee_list.HideSelection = false;
-            this.employee_list.Location = new System.Drawing.Point(8, 92);
+            this.employee_list.Location = new System.Drawing.Point(8, 6);
             this.employee_list.Name = "employee_list";
-            this.employee_list.Size = new System.Drawing.Size(889, 297);
+            this.employee_list.Size = new System.Drawing.Size(889, 383);
             this.employee_list.TabIndex = 13;
             this.employee_list.UseCompatibleStateImageBehavior = false;
             this.employee_list.View = System.Windows.Forms.View.Details;
@@ -637,7 +653,7 @@
             // 
             // columnHeader2
             // 
-            this.columnHeader2.Text = "Passport";
+            this.columnHeader2.Text = "Паспорт";
             this.columnHeader2.Width = 128;
             // 
             // Birthday
@@ -663,11 +679,143 @@
             // createPayout
             // 
             this.createPayout.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.createPayout.Controls.Add(this.label19);
+            this.createPayout.Controls.Add(this.monthsPayout);
+            this.createPayout.Controls.Add(this.label18);
+            this.createPayout.Controls.Add(this.numericUpDown1);
+            this.createPayout.Controls.Add(this.label17);
+            this.createPayout.Controls.Add(this.textBox3);
+            this.createPayout.Controls.Add(this.label16);
+            this.createPayout.Controls.Add(this.employeePayout);
+            this.createPayout.Controls.Add(this.button5);
             this.createPayout.Location = new System.Drawing.Point(4, 22);
             this.createPayout.Name = "createPayout";
             this.createPayout.Size = new System.Drawing.Size(905, 449);
             this.createPayout.TabIndex = 2;
             this.createPayout.Text = "Начислить выплату";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label19.Location = new System.Drawing.Point(429, 125);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(53, 18);
+            this.label19.TabIndex = 19;
+            this.label19.Text = "Месяц";
+            this.label19.Click += new System.EventHandler(this.Label19_Click);
+            // 
+            // monthsPayout
+            // 
+            this.monthsPayout.FormattingEnabled = true;
+            this.monthsPayout.Location = new System.Drawing.Point(432, 146);
+            this.monthsPayout.Name = "monthsPayout";
+            this.monthsPayout.Size = new System.Drawing.Size(121, 21);
+            this.monthsPayout.TabIndex = 17;
+            this.monthsPayout.SelectedIndexChanged += new System.EventHandler(this.MonthsPayout_SelectedIndexChanged);
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label18.Location = new System.Drawing.Point(635, 58);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(137, 18);
+            this.label18.TabIndex = 6;
+            this.label18.Text = "Количество часов";
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.numericUpDown1.Location = new System.Drawing.Point(638, 79);
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(82, 26);
+            this.numericUpDown1.TabIndex = 14;
+            this.numericUpDown1.ValueChanged += new System.EventHandler(this.NumericUpDown1_ValueChanged);
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label17.Location = new System.Drawing.Point(429, 58);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(133, 18);
+            this.label17.TabIndex = 4;
+            this.label17.Text = "Введите зарплату";
+            this.label17.Click += new System.EventHandler(this.Label17_Click);
+            // 
+            // textBox3
+            // 
+            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBox3.Location = new System.Drawing.Point(432, 79);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(149, 26);
+            this.textBox3.TabIndex = 13;
+            this.textBox3.TextChanged += new System.EventHandler(this.TextBox3_TextChanged);
+            this.textBox3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox3_KeyPress);
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label16.Location = new System.Drawing.Point(8, 38);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(154, 17);
+            this.label16.TabIndex = 2;
+            this.label16.Text = "Выберите сотрудника";
+            this.label16.Click += new System.EventHandler(this.Label16_Click);
+            // 
+            // employeePayout
+            // 
+            this.employeePayout.BackColor = System.Drawing.Color.Honeydew;
+            this.employeePayout.CheckBoxes = true;
+            this.employeePayout.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader11,
+            this.columnHeader12,
+            this.columnHeader13,
+            this.columnHeader14});
+            this.employeePayout.FullRowSelect = true;
+            this.employeePayout.GridLines = true;
+            this.employeePayout.HideSelection = false;
+            this.employeePayout.Location = new System.Drawing.Point(8, 58);
+            this.employeePayout.Name = "employeePayout";
+            this.employeePayout.Size = new System.Drawing.Size(385, 381);
+            this.employeePayout.TabIndex = 1;
+            this.employeePayout.UseCompatibleStateImageBehavior = false;
+            this.employeePayout.View = System.Windows.Forms.View.Details;
+            this.employeePayout.ItemChecked += new System.Windows.Forms.ItemCheckedEventHandler(this.EmployeePayout_ItemChecked);
+            this.employeePayout.SelectedIndexChanged += new System.EventHandler(this.ListView1_SelectedIndexChanged);
+            // 
+            // columnHeader11
+            // 
+            this.columnHeader11.Text = "ID";
+            this.columnHeader11.Width = 62;
+            // 
+            // columnHeader12
+            // 
+            this.columnHeader12.Text = "Паспорт";
+            this.columnHeader12.Width = 78;
+            // 
+            // columnHeader13
+            // 
+            this.columnHeader13.Text = "Профессия";
+            this.columnHeader13.Width = 115;
+            // 
+            // columnHeader14
+            // 
+            this.columnHeader14.Text = "Отдел";
+            this.columnHeader14.Width = 125;
+            // 
+            // button5
+            // 
+            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button5.Location = new System.Drawing.Point(617, 205);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(103, 32);
+            this.button5.TabIndex = 16;
+            this.button5.Text = "Выдать";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.Button5_Click);
             // 
             // worstEmployee
             // 
@@ -690,6 +838,7 @@
             this.badEmployeeView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.badEmployeeView.BackColor = System.Drawing.Color.Honeydew;
             this.badEmployeeView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader5,
             this.columnHeader6,
@@ -742,7 +891,7 @@
             this.button4.Location = new System.Drawing.Point(289, 37);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(133, 23);
-            this.button4.TabIndex = 4;
+            this.button4.TabIndex = 19;
             this.button4.Text = "Получить список";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.Button4_Click);
@@ -762,7 +911,7 @@
             this.yearWorst.Location = new System.Drawing.Point(166, 37);
             this.yearWorst.Name = "yearWorst";
             this.yearWorst.Size = new System.Drawing.Size(94, 21);
-            this.yearWorst.TabIndex = 2;
+            this.yearWorst.TabIndex = 18;
             // 
             // label12
             // 
@@ -779,7 +928,7 @@
             this.monthsWorst.Location = new System.Drawing.Point(14, 37);
             this.monthsWorst.Name = "monthsWorst";
             this.monthsWorst.Size = new System.Drawing.Size(121, 21);
-            this.monthsWorst.TabIndex = 0;
+            this.monthsWorst.TabIndex = 17;
             // 
             // tabPage4
             // 
@@ -846,7 +995,7 @@
             this.button1.Location = new System.Drawing.Point(523, 80);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(85, 28);
-            this.button1.TabIndex = 8;
+            this.button1.TabIndex = 21;
             this.button1.Text = "Сохранить";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.Button1_Click);
@@ -867,7 +1016,7 @@
             this.textBox1.Location = new System.Drawing.Point(523, 47);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(179, 27);
-            this.textBox1.TabIndex = 6;
+            this.textBox1.TabIndex = 20;
             this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox1_KeyPress);
             // 
             // label10
@@ -884,6 +1033,7 @@
             this.professionsList.Alignment = System.Windows.Forms.ListViewAlignment.SnapToGrid;
             this.professionsList.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
+            this.professionsList.BackColor = System.Drawing.Color.Honeydew;
             this.professionsList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader4});
             this.professionsList.FullRowSelect = true;
@@ -904,6 +1054,15 @@
             // 
             // editPayout
             // 
+            this.editPayout.Controls.Add(this.datePayoutChange);
+            this.editPayout.Controls.Add(this.label23);
+            this.editPayout.Controls.Add(this.button6);
+            this.editPayout.Controls.Add(this.label22);
+            this.editPayout.Controls.Add(this.textBox4);
+            this.editPayout.Controls.Add(this.employeePayoutName);
+            this.editPayout.Controls.Add(this.label21);
+            this.editPayout.Controls.Add(this.label20);
+            this.editPayout.Controls.Add(this.payoutChange);
             this.editPayout.Location = new System.Drawing.Point(4, 22);
             this.editPayout.Name = "editPayout";
             this.editPayout.Padding = new System.Windows.Forms.Padding(3);
@@ -911,6 +1070,137 @@
             this.editPayout.TabIndex = 1;
             this.editPayout.Text = "Редактирование выплат";
             this.editPayout.UseVisualStyleBackColor = true;
+            // 
+            // datePayoutChange
+            // 
+            this.datePayoutChange.AutoSize = true;
+            this.datePayoutChange.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.datePayoutChange.Location = new System.Drawing.Point(770, 101);
+            this.datePayoutChange.Name = "datePayoutChange";
+            this.datePayoutChange.Size = new System.Drawing.Size(24, 18);
+            this.datePayoutChange.TabIndex = 8;
+            this.datePayoutChange.Text = "за";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(712, 106);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(19, 13);
+            this.label23.TabIndex = 7;
+            this.label23.Text = "за";
+            // 
+            // button6
+            // 
+            this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button6.Location = new System.Drawing.Point(689, 265);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(90, 31);
+            this.button6.TabIndex = 6;
+            this.button6.Text = "Сохранить";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.Button6_Click);
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label22.Location = new System.Drawing.Point(643, 212);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(184, 18);
+            this.label22.TabIndex = 5;
+            this.label22.Text = "Введите новое значение:";
+            // 
+            // textBox4
+            // 
+            this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBox4.Location = new System.Drawing.Point(668, 233);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(126, 26);
+            this.textBox4.TabIndex = 4;
+            this.textBox4.TextChanged += new System.EventHandler(this.TextBox4_TextChanged);
+            this.textBox4.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox4_KeyPress);
+            // 
+            // employeePayoutName
+            // 
+            this.employeePayoutName.AutoSize = true;
+            this.employeePayoutName.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.employeePayoutName.Location = new System.Drawing.Point(574, 101);
+            this.employeePayoutName.Name = "employeePayoutName";
+            this.employeePayoutName.Size = new System.Drawing.Size(32, 18);
+            this.employeePayoutName.TabIndex = 3;
+            this.employeePayoutName.Text = "sdg";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label21.Location = new System.Drawing.Point(574, 68);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(303, 18);
+            this.label21.TabIndex = 2;
+            this.label21.Text = "Редактирование выплаты для сотрудника";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label20.Location = new System.Drawing.Point(8, 22);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(153, 20);
+            this.label20.TabIndex = 1;
+            this.label20.Text = "Выберите выплату";
+            // 
+            // payoutChange
+            // 
+            this.payoutChange.BackColor = System.Drawing.Color.Honeydew;
+            this.payoutChange.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader15,
+            this.columnHeader16,
+            this.columnHeader17,
+            this.columnHeader18,
+            this.columnHeader19,
+            this.columnHeader20});
+            this.payoutChange.FullRowSelect = true;
+            this.payoutChange.GridLines = true;
+            this.payoutChange.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.payoutChange.HideSelection = false;
+            this.payoutChange.Location = new System.Drawing.Point(8, 45);
+            this.payoutChange.MultiSelect = false;
+            this.payoutChange.Name = "payoutChange";
+            this.payoutChange.Size = new System.Drawing.Size(560, 394);
+            this.payoutChange.TabIndex = 0;
+            this.payoutChange.UseCompatibleStateImageBehavior = false;
+            this.payoutChange.View = System.Windows.Forms.View.Details;
+            this.payoutChange.SelectedIndexChanged += new System.EventHandler(this.ListView1_SelectedIndexChanged_1);
+            // 
+            // columnHeader15
+            // 
+            this.columnHeader15.Text = "ID";
+            // 
+            // columnHeader16
+            // 
+            this.columnHeader16.Text = "Паспорт";
+            this.columnHeader16.Width = 88;
+            // 
+            // columnHeader17
+            // 
+            this.columnHeader17.Text = "Профессия";
+            this.columnHeader17.Width = 106;
+            // 
+            // columnHeader18
+            // 
+            this.columnHeader18.Text = "Отдел";
+            this.columnHeader18.Width = 100;
+            // 
+            // columnHeader19
+            // 
+            this.columnHeader19.Text = "Выдано";
+            this.columnHeader19.Width = 80;
+            // 
+            // columnHeader20
+            // 
+            this.columnHeader20.Text = "Дата";
             // 
             // tabPage7
             // 
@@ -964,7 +1254,7 @@
             this.button3.Location = new System.Drawing.Point(385, 247);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(97, 35);
-            this.button3.TabIndex = 10;
+            this.button3.TabIndex = 23;
             this.button3.Text = "Сохранить";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.Button3_Click_1);
@@ -975,7 +1265,7 @@
             this.dep_name.Location = new System.Drawing.Point(337, 164);
             this.dep_name.Name = "dep_name";
             this.dep_name.Size = new System.Drawing.Size(199, 29);
-            this.dep_name.TabIndex = 11;
+            this.dep_name.TabIndex = 22;
             // 
             // tabPage13
             // 
@@ -1008,7 +1298,7 @@
             this.textBox2.Location = new System.Drawing.Point(342, 201);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(199, 29);
-            this.textBox2.TabIndex = 15;
+            this.textBox2.TabIndex = 25;
             this.textBox2.TextChanged += new System.EventHandler(this.TextBox2_TextChanged_2);
             this.textBox2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox2_KeyPress);
             // 
@@ -1027,7 +1317,7 @@
             this.accept.Location = new System.Drawing.Point(394, 264);
             this.accept.Name = "accept";
             this.accept.Size = new System.Drawing.Size(97, 35);
-            this.accept.TabIndex = 4;
+            this.accept.TabIndex = 26;
             this.accept.Text = "Сохранить";
             this.accept.UseVisualStyleBackColor = true;
             this.accept.Click += new System.EventHandler(this.Accept_Click_1);
@@ -1038,7 +1328,72 @@
             this.prof_name.Location = new System.Drawing.Point(342, 121);
             this.prof_name.Name = "prof_name";
             this.prof_name.Size = new System.Drawing.Size(199, 29);
-            this.prof_name.TabIndex = 5;
+            this.prof_name.TabIndex = 24;
+            // 
+            // ведомостьToolStripMenuItem
+            // 
+            this.ведомостьToolStripMenuItem.Name = "ведомостьToolStripMenuItem";
+            this.ведомостьToolStripMenuItem.Size = new System.Drawing.Size(282, 22);
+            this.ведомостьToolStripMenuItem.Text = "Ведомость";
+            this.ведомостьToolStripMenuItem.Click += new System.EventHandler(this.ВедомостьToolStripMenuItem_Click);
+            // 
+            // добавитьToolStripMenuItem
+            // 
+            this.добавитьToolStripMenuItem.Name = "добавитьToolStripMenuItem";
+            this.добавитьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.добавитьToolStripMenuItem.Text = "Добавить";
+            this.добавитьToolStripMenuItem.Click += new System.EventHandler(this.ДобавитьToolStripMenuItem_Click);
+            // 
+            // удалитьToolStripMenuItem
+            // 
+            this.удалитьToolStripMenuItem.Name = "удалитьToolStripMenuItem";
+            this.удалитьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.удалитьToolStripMenuItem.Text = "Удалить";
+            this.удалитьToolStripMenuItem.Click += new System.EventHandler(this.УдалитьToolStripMenuItem_Click);
+            // 
+            // button7
+            // 
+            this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button7.Location = new System.Drawing.Point(348, 111);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(195, 61);
+            this.button7.TabIndex = 0;
+            this.button7.Text = "Управление сотрудниками";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.Button7_Click);
+            // 
+            // button8
+            // 
+            this.button8.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button8.Location = new System.Drawing.Point(348, 178);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(195, 61);
+            this.button8.TabIndex = 1;
+            this.button8.Text = "Управление выплатами";
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.Button8_Click);
+            // 
+            // button9
+            // 
+            this.button9.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button9.Location = new System.Drawing.Point(348, 245);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(195, 61);
+            this.button9.TabIndex = 2;
+            this.button9.Text = "Управление организацией";
+            this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.Button9_Click);
+            // 
+            // button10
+            // 
+            this.button10.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button10.Location = new System.Drawing.Point(348, 312);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(195, 61);
+            this.button10.TabIndex = 3;
+            this.button10.Text = "Выйти";
+            this.button10.UseVisualStyleBackColor = true;
+            this.button10.Click += new System.EventHandler(this.Button10_Click);
             // 
             // MainForm
             // 
@@ -1055,11 +1410,11 @@
             this.Name = "MainForm";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
             this.Text = "MainForm";
-            this.WindowState = System.Windows.Forms.FormWindowState.Minimized;
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.mainTabControl.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
@@ -1067,12 +1422,17 @@
             this.addEmployee.PerformLayout();
             this.deleteEmployee.ResumeLayout(false);
             this.deleteEmployee.PerformLayout();
+            this.createPayout.ResumeLayout(false);
+            this.createPayout.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.worstEmployee.ResumeLayout(false);
             this.worstEmployee.PerformLayout();
             this.tabPage4.ResumeLayout(false);
             this.editingTabControl.ResumeLayout(false);
             this.editRate.ResumeLayout(false);
             this.editRate.PerformLayout();
+            this.editPayout.ResumeLayout(false);
+            this.editPayout.PerformLayout();
             this.tabPage7.ResumeLayout(false);
             this.tabControl2.ResumeLayout(false);
             this.tabPage12.ResumeLayout(false);
@@ -1096,7 +1456,6 @@
         private System.Windows.Forms.ToolStripMenuItem связьСРазработчикомToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem подключениеToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem сменитьПодключениеToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem закрытьПодключениеToolStripMenuItem;
         private System.Windows.Forms.TabControl mainTabControl;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
@@ -1116,9 +1475,6 @@
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage deleteEmployee;
-        private System.Windows.Forms.Button finder;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox passport_search_field;
         private System.Windows.Forms.Button delete_button;
         private System.Windows.Forms.Label amount;
         private System.Windows.Forms.Label label7;
@@ -1175,5 +1531,40 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.ListView employeePayout;
+        private System.Windows.Forms.ColumnHeader columnHeader11;
+        private System.Windows.Forms.ColumnHeader columnHeader12;
+        private System.Windows.Forms.ColumnHeader columnHeader13;
+        private System.Windows.Forms.ColumnHeader columnHeader14;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.ComboBox monthsPayout;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.ListView payoutChange;
+        private System.Windows.Forms.ColumnHeader columnHeader15;
+        private System.Windows.Forms.ColumnHeader columnHeader16;
+        private System.Windows.Forms.ColumnHeader columnHeader17;
+        private System.Windows.Forms.ColumnHeader columnHeader18;
+        private System.Windows.Forms.ColumnHeader columnHeader19;
+        private System.Windows.Forms.ColumnHeader columnHeader20;
+        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.Label employeePayoutName;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label datePayoutChange;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.ToolStripMenuItem добавитьToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem удалитьToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ведомостьToolStripMenuItem;
+        private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button button7;
     }
 }

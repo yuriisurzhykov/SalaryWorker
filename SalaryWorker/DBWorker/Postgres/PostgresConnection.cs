@@ -105,5 +105,10 @@ namespace SalaryWorker.DBWorker.Postgres
                 instance = new PostgresConnection();
             return instance;
         }
+        public static void Reconnection()
+        {
+            File.Delete(Environment.SpecialFolder.ApplicationData + "conn.txt");
+            Application.Restart();
+        }
     }
 }
