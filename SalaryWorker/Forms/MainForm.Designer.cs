@@ -31,6 +31,9 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.основноеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.доабвитьСотрудникаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.добавитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.удалитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ведомостьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.начислениеЗарплатыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.создатьРасчетToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.выйтиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -40,6 +43,10 @@
             this.сменитьПодключениеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mainTabControl = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.button10 = new System.Windows.Forms.Button();
+            this.button9 = new System.Windows.Forms.Button();
+            this.button8 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.generate = new System.Windows.Forms.Button();
             this.year_comboBox = new System.Windows.Forms.ComboBox();
@@ -141,13 +148,6 @@
             this.label9 = new System.Windows.Forms.Label();
             this.accept = new System.Windows.Forms.Button();
             this.prof_name = new System.Windows.Forms.TextBox();
-            this.ведомостьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.добавитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.удалитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
-            this.button10 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.mainTabControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -202,6 +202,27 @@
             this.доабвитьСотрудникаToolStripMenuItem.Size = new System.Drawing.Size(282, 22);
             this.доабвитьСотрудникаToolStripMenuItem.Text = "Сотрудники";
             this.доабвитьСотрудникаToolStripMenuItem.Click += new System.EventHandler(this.ДоабвитьСотрудникаToolStripMenuItem_Click);
+            // 
+            // добавитьToolStripMenuItem
+            // 
+            this.добавитьToolStripMenuItem.Name = "добавитьToolStripMenuItem";
+            this.добавитьToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
+            this.добавитьToolStripMenuItem.Text = "Добавить";
+            this.добавитьToolStripMenuItem.Click += new System.EventHandler(this.ДобавитьToolStripMenuItem_Click);
+            // 
+            // удалитьToolStripMenuItem
+            // 
+            this.удалитьToolStripMenuItem.Name = "удалитьToolStripMenuItem";
+            this.удалитьToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
+            this.удалитьToolStripMenuItem.Text = "Удалить";
+            this.удалитьToolStripMenuItem.Click += new System.EventHandler(this.УдалитьToolStripMenuItem_Click);
+            // 
+            // ведомостьToolStripMenuItem
+            // 
+            this.ведомостьToolStripMenuItem.Name = "ведомостьToolStripMenuItem";
+            this.ведомостьToolStripMenuItem.Size = new System.Drawing.Size(282, 22);
+            this.ведомостьToolStripMenuItem.Text = "Ведомость";
+            this.ведомостьToolStripMenuItem.Click += new System.EventHandler(this.ВедомостьToolStripMenuItem_Click);
             // 
             // начислениеЗарплатыToolStripMenuItem
             // 
@@ -282,6 +303,50 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Главные действия";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // button10
+            // 
+            this.button10.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button10.Location = new System.Drawing.Point(348, 312);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(195, 61);
+            this.button10.TabIndex = 3;
+            this.button10.Text = "Выйти";
+            this.button10.UseVisualStyleBackColor = true;
+            this.button10.Click += new System.EventHandler(this.Button10_Click);
+            // 
+            // button9
+            // 
+            this.button9.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button9.Location = new System.Drawing.Point(348, 245);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(195, 61);
+            this.button9.TabIndex = 2;
+            this.button9.Text = "Управление организацией";
+            this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.Button9_Click);
+            // 
+            // button8
+            // 
+            this.button8.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button8.Location = new System.Drawing.Point(348, 178);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(195, 61);
+            this.button8.TabIndex = 1;
+            this.button8.Text = "Управление выплатами";
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.Button8_Click);
+            // 
+            // button7
+            // 
+            this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button7.Location = new System.Drawing.Point(348, 111);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(195, 61);
+            this.button7.TabIndex = 0;
+            this.button7.Text = "Управление сотрудниками";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.Button7_Click);
             // 
             // tabPage2
             // 
@@ -644,6 +709,7 @@
             this.employee_list.TabIndex = 13;
             this.employee_list.UseCompatibleStateImageBehavior = false;
             this.employee_list.View = System.Windows.Forms.View.Details;
+            this.employee_list.ItemChecked += new System.Windows.Forms.ItemCheckedEventHandler(this.Employee_list_ItemChecked);
             this.employee_list.SelectedIndexChanged += new System.EventHandler(this.Employee_list_SelectedIndexChanged);
             // 
             // columnHeader1
@@ -1329,71 +1395,6 @@
             this.prof_name.Name = "prof_name";
             this.prof_name.Size = new System.Drawing.Size(199, 29);
             this.prof_name.TabIndex = 24;
-            // 
-            // ведомостьToolStripMenuItem
-            // 
-            this.ведомостьToolStripMenuItem.Name = "ведомостьToolStripMenuItem";
-            this.ведомостьToolStripMenuItem.Size = new System.Drawing.Size(282, 22);
-            this.ведомостьToolStripMenuItem.Text = "Ведомость";
-            this.ведомостьToolStripMenuItem.Click += new System.EventHandler(this.ВедомостьToolStripMenuItem_Click);
-            // 
-            // добавитьToolStripMenuItem
-            // 
-            this.добавитьToolStripMenuItem.Name = "добавитьToolStripMenuItem";
-            this.добавитьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.добавитьToolStripMenuItem.Text = "Добавить";
-            this.добавитьToolStripMenuItem.Click += new System.EventHandler(this.ДобавитьToolStripMenuItem_Click);
-            // 
-            // удалитьToolStripMenuItem
-            // 
-            this.удалитьToolStripMenuItem.Name = "удалитьToolStripMenuItem";
-            this.удалитьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.удалитьToolStripMenuItem.Text = "Удалить";
-            this.удалитьToolStripMenuItem.Click += new System.EventHandler(this.УдалитьToolStripMenuItem_Click);
-            // 
-            // button7
-            // 
-            this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button7.Location = new System.Drawing.Point(348, 111);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(195, 61);
-            this.button7.TabIndex = 0;
-            this.button7.Text = "Управление сотрудниками";
-            this.button7.UseVisualStyleBackColor = true;
-            this.button7.Click += new System.EventHandler(this.Button7_Click);
-            // 
-            // button8
-            // 
-            this.button8.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button8.Location = new System.Drawing.Point(348, 178);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(195, 61);
-            this.button8.TabIndex = 1;
-            this.button8.Text = "Управление выплатами";
-            this.button8.UseVisualStyleBackColor = true;
-            this.button8.Click += new System.EventHandler(this.Button8_Click);
-            // 
-            // button9
-            // 
-            this.button9.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button9.Location = new System.Drawing.Point(348, 245);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(195, 61);
-            this.button9.TabIndex = 2;
-            this.button9.Text = "Управление организацией";
-            this.button9.UseVisualStyleBackColor = true;
-            this.button9.Click += new System.EventHandler(this.Button9_Click);
-            // 
-            // button10
-            // 
-            this.button10.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button10.Location = new System.Drawing.Point(348, 312);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(195, 61);
-            this.button10.TabIndex = 3;
-            this.button10.Text = "Выйти";
-            this.button10.UseVisualStyleBackColor = true;
-            this.button10.Click += new System.EventHandler(this.Button10_Click);
             // 
             // MainForm
             // 

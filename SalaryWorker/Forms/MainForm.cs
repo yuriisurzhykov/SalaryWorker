@@ -171,6 +171,7 @@ namespace SalaryWorker.Forms
                 case 1:
                     Console.WriteLine("Удалить сотрудника");
                     employee_list.View = View.Details;
+                    amount.Text = employee_list.CheckedItems.Count.ToString();
                     employee_list.Items.Clear();
                     employeesList.Clear();
                     employeesList = PostgresInteraction.GetInstance().getAllEmployees();
@@ -401,7 +402,7 @@ namespace SalaryWorker.Forms
 
         private void Employee_list_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            
         }
 
         private void Delete_button_Click(object sender, EventArgs e)
@@ -689,6 +690,11 @@ namespace SalaryWorker.Forms
         private void Button10_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void Employee_list_ItemChecked(object sender, ItemCheckedEventArgs e)
+        {
+            amount.Text = employee_list.CheckedItems.Count.ToString();
         }
     }
 }
