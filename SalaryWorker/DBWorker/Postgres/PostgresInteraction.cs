@@ -11,6 +11,7 @@ namespace SalaryWorker.DBWorker.Postgres
 {
     class PostgresInteraction : DBInteraction
     {
+        private const string TAG = "PostgresInteraction: ";
         private static NpgsqlConnection connection;
         private static PostgresInteraction instance = null;
 
@@ -74,6 +75,7 @@ namespace SalaryWorker.DBWorker.Postgres
             {
                 string query = "INSERT INTO employee VALUES(DEFAULT, @p1, @p2, @p3, @p4, @p5);";
                 connection.Open();
+                Console.WriteLine(TAG + employee);
                 NpgsqlCommand command = new NpgsqlCommand(query, connection);
                 command.Parameters.AddWithValue("p1", employee.Passport);
                 command.Parameters.AddWithValue("p2", employee.Birthday);
@@ -414,7 +416,7 @@ namespace SalaryWorker.DBWorker.Postgres
                     Profession profession = new Profession((int)read[6], (string)read[7]);
                     Department department = new Department((int)read[4], (string)read[5]);
 
-                    list.Add(new Employee((int)read[0], (string)read[1], (DateTime)read[2], profession, department, (DateTime)read[2]));
+                    list.Add(new Employee((int)read[0], (string)read[1], (DateTime)read[2], profession, department, (DateTime)read[3]));
                 }
                 connection.Close();
                 return list;
